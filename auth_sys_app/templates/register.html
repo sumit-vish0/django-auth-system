@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Sign Up{% endblock title %}
+{% block extra_css %} 
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+{% endblock extra_css %}
+{% block content %}
+
+
+<div class="main-container">
+    <h1>Register Form</h1>
+    <form method="POSt">
+        {% csrf_token %}
+        <div class="field-container">
+            <label for="">Username : </label><br>
+            <input type="text" name="username" required>
+        </div>
+        <div class="field-container">
+            <label for="">Email : </label><br>
+            <input type="email" name="email" required>
+        </div>
+        <div class="field-container">
+            <label for="">Password : </label><br>
+            <input type="password" name="pwd" required>
+        </div>
+        <div class="field-container">
+            <label for="">Confirm Passsword : </label> <br>
+            <input type="password" name="pwd2" required>
+        </div>
+        {% if errors %}
+            {% for error in errors %}
+            <p style="color: red;">{{ errors }}</p>
+            {% endfor %}
+        {% endif %}
+
+        <button type="submit">Submit</button>
+    </form>
+    </div>
+    {% endblock content %}

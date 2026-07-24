@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Signin{% endblock title %}
+{% block extra_css %} 
+<link rel="stylesheet" href="{% static 'css/signin.css' %}">
+{% endblock extra_css %}
+{% block content %}
+    <div class="login-container">
+        <h1>LOG IN TO THE APPLICATION</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <h2>Welcome..</h2>
+            <div>
+                <label for="">Username </label><br>
+                <input type="text" name="username" required>
+            </div>
+            <div>
+                <label for="">Passsword </label><br>
+                <input type="password" name="password" required>
+            </div>
+            {% if error %}
+                <p style="color: red;">{{ error }}</p>
+            {% endif %}
+            <button type="submit">Login</button>
+        </form>
+    </div>
+{% endblock content %}
